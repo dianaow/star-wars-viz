@@ -1,11 +1,20 @@
-import React from "react"
+import React, { FC } from "react"
 import * as d3 from 'd3'
 
-const axisComponentsByDimension = {
+interface AxisProps {
+  dimensions: {boundedWidth: number, boundedHeight: number},
+  dimension: string
+  label: string
+  formatTick?: any
+  scale?: any
+}
+
+const axisComponentsByDimension: any = {
   x: AxisHorizontal,
   y: AxisVertical,
-}
-const Axis = ({ dimensions, dimension, ...props }) => {
+} 
+
+const Axis: FC<AxisProps> = ({ dimensions, dimension, ...props }) => {
   const Component = axisComponentsByDimension[dimension]
   if (!Component) return null
 
@@ -19,18 +28,17 @@ const Axis = ({ dimensions, dimension, ...props }) => {
 
 Axis.defaultProps = {
   dimension: "x",
-  scale: null,
   formatTick: d3.format(","),
 }
 
 export default Axis
 
-function AxisHorizontal ({ dimensions, label, formatTick, scale, ...props }) {
+function AxisHorizontal ({ dimensions, label, formatTick, scale, ...props }: AxisProps) {
   const numberOfTicks = dimensions.boundedWidth < 600
         ? dimensions.boundedWidth / 100
         : dimensions.boundedWidth / 250
 
-  const ticks = scale.ticks(numberOfTicks)
+  const ticks: number[] = scale.ticks(numberOfTicks)
 
   return (
     <g className="Axis AxisHorizontal" transform={`translate(0, ${dimensions.boundedHeight})`} {...props}>
@@ -62,10 +70,10 @@ function AxisHorizontal ({ dimensions, label, formatTick, scale, ...props }) {
   )
 }
 
-function AxisVertical ({ dimensions, label, formatTick, scale, ...props }) {
+function AxisVertical ({ dimensions, label, formatTick, scale, ...props }: AxisProps) {
   const numberOfTicks = dimensions.boundedHeight / 70
 
-  const ticks = scale.ticks(numberOfTicks)
+  const ticks: number[] = scale.ticks(numberOfTicks)
 
   return (
     <g className="Axis AxisVertical" {...props}>

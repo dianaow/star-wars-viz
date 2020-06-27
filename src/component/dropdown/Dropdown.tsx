@@ -1,6 +1,15 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, FC } from "react"
+import {Items} from '../../model/species';
 
-const useDropdown = (label, defaultValue, items) => {
+type DropdownProps = {
+   label: string;
+   defaultValue: string;
+   items: Items[];
+}
+
+type returnProps = [string, FC, (url: string) => void]
+
+const useDropdown = ({label, defaultValue, items}: DropdownProps): returnProps  => {
 
   const [value, setValue] = useState(defaultValue)
 

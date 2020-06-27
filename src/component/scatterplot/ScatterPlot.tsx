@@ -1,11 +1,20 @@
-import React from "react"
+import React, { FC } from "react"
 import * as d3 from "d3"
 
 import Circles from "../shared/Circles"
 import Axis from "../shared/Axis"
 import { combineChartDimensions } from "../shared/useChartDimensions";
+import {Person} from '../../model/person';
 
-const ScatterPlot = ({ data, xAccessor, yAccessor, xLabel, yLabel }) => {
+interface ScatterPlotProps {
+  data: Person[];
+  xAccessor: any;
+  yAccessor: any;
+  xLabel: string;
+  yLabel: string;
+}
+
+const ScatterPlot: FC<ScatterPlotProps> = ({ data, xAccessor, yAccessor, xLabel, yLabel }) => {
 
   const dimensions = combineChartDimensions({width: 600, height: 600})
 
@@ -21,9 +30,9 @@ const ScatterPlot = ({ data, xAccessor, yAccessor, xLabel, yLabel }) => {
     .range([dimensions.boundedHeight, 0])
     .nice()
 
-  const xAccessorScaled = d => xScale(xAccessor(d))
-  const yAccessorScaled = d => yScale(yAccessor(d))
-  const keyAccessor = (d, i) => i
+  const xAccessorScaled = (d: any) => xScale(xAccessor(d))
+  const yAccessorScaled = (d: any) => yScale(yAccessor(d))
+  const keyAccessor = (d: any, i: number) => i
  
   return (
     <div className="ScatterPlot" >
@@ -46,6 +55,7 @@ const ScatterPlot = ({ data, xAccessor, yAccessor, xLabel, yLabel }) => {
             keyAccessor={keyAccessor}
             xAccessor={xAccessorScaled}
             yAccessor={yAccessorScaled}
+            radius={5}
           />
         </g>
       </svg>

@@ -1,11 +1,20 @@
-import React, { useContext } from "react"
+import React, { useContext, FC } from "react"
 import { initialTooltipState, TooltipContext } from "../tooltip/TooltipContext"
+import {Person} from '../../model/person';
 
-const Circles = ({ data, keyAccessor, xAccessor, yAccessor, radius }) => {
+interface CirclesProps {
+  data: Person[];
+  keyAccessor: any;
+  xAccessor: any;
+  yAccessor: any;
+  radius: number;
+}
+
+const Circles: FC<CirclesProps>  = ({ data, keyAccessor, xAccessor, yAccessor, radius }) => {
 
   const { setTooltip } = useContext(TooltipContext)
 
-  const mouseOver = (d) => {
+  const mouseOver = (d: Person) => {
 
     const x = xAccessor(d)
     const y = yAccessor(d)
@@ -30,7 +39,7 @@ const Circles = ({ data, keyAccessor, xAccessor, yAccessor, radius }) => {
           key={keyAccessor(d, i)}
           cx={xAccessor(d, i)}
           cy={yAccessor(d, i)}
-          r={5}
+          r={radius}
           onMouseOver={() => mouseOver(d)}
           onMouseOut={() => mouseOut()}
         />

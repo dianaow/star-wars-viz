@@ -4,17 +4,19 @@ import ScatterPlot from "./component/scatterplot/ScatterPlot"
 import useDropdown from "./component/dropdown/Dropdown"
 import Tooltip from "./component/tooltip/Tooltip"
 import { TooltipProvider } from "./component/tooltip/TooltipContext"
+import {Items} from './model/species';
+import {Person} from './model/person';
 
 import "./App.css"
 
-const massAccessor = d => d.mass
-const heightAccessor = d => d.height
+const massAccessor = (d: any) => d.mass
+const heightAccessor = (d: any) => d.height
 
 const App = () => {
 
-  const [data, setData] = useState([])
-  const [items, setItems] = useState([])
-  const [value, DropDown] = useDropdown("Species", "https://swapi.dev/api/species/1/", items);
+  const [data, setData] = useState<Person[]>([])
+  const [items, setItems] = useState<Items[]>([])
+  const [value, DropDown] = useDropdown({label: "Species", defaultValue: "https://swapi.dev/api/species/1/", items});
 
   useEffect(() => {
 
@@ -29,12 +31,11 @@ const App = () => {
 
   useEffect(() => {
 
-    console.log(value)
-    getData(value).then(response => {
+    getData(value).then((response: any) => {
       setData(response) 
     });
 
-  }, [value, getData]);
+  }, [value]);
 
   return (
     <TooltipProvider>

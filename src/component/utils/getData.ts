@@ -1,14 +1,15 @@
-import {PeopleService} from '../service/person.service';
-import {SpeciesService} from '../service/species.service';
+import {PeopleService} from '../../service/person.service';
+import {SpeciesService} from '../../service/species.service';
+import {Species} from '../../model/species';
 
-export const getData = async (id) => {
+export const getData = async (id: string) => {
 
   const speciesService = new SpeciesService();
   const personService = new PeopleService();
 
   let res = await speciesService.getSpecies(id)
 
-  const promises =  res['people'].map(async (d) =>{
+  const promises =  res['people'].map(async (d: string) =>{
     let person = await personService.getPerson(d)
     return {
       name: person.name,
@@ -37,7 +38,7 @@ export const getSpeciesList = async () => {
 
     try {
       let res = await speciesService.getSpeciesPage(d)
-      return res['results'].map(el => Object.assign({}, el))
+      return res['results'].map((el: Species) => Object.assign({}, {name: el.name, url: el.url}))
 
     } catch(err){
       console.log(err)

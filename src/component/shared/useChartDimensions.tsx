@@ -1,4 +1,9 @@
-export const combineChartDimensions = dimensions => {
+interface DMS {
+  width: number,
+  height: number
+}
+
+export const combineChartDimensions = (dimensions: DMS) => {
   let parsedDimensions = {
     marginTop: 20,
     marginRight: 20,
