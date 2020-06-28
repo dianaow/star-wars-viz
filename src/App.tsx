@@ -4,9 +4,10 @@ import ScatterPlot from "./component/scatterplot/ScatterPlot"
 import useDropdown from "./component/dropdown/Dropdown"
 import Tooltip from "./component/tooltip/Tooltip"
 import { TooltipProvider } from "./component/tooltip/TooltipContext"
-import {Items} from './model/species';
-import {Person} from './model/person';
+import {Items} from './model/species'
+import {Person} from './model/person'
 
+import logo from "./assets/Star_Wars_Logo.png"
 import "./App.css"
 
 const massAccessor = (d: any) => d.mass
@@ -16,7 +17,7 @@ const App = () => {
 
   const [data, setData] = useState<Person[]>([])
   const [items, setItems] = useState<Items[]>([])
-  const [value, DropDown] = useDropdown({label: "Species", defaultValue: "https://swapi.dev/api/species/1/", items});
+  const [value, DropDown] = useDropdown({label: "Pick a species", defaultValue: "http://swapi.dev/api/species/1/", items});
 
   useEffect(() => {
 
@@ -40,17 +41,15 @@ const App = () => {
   return (
     <TooltipProvider>
       <div className="App">
-        <h1>
-          Star Wars Universe
-        </h1>
+        <img src={logo} width="200px"/>
         <DropDown />
         <div className="App__charts">
           <ScatterPlot
             data={data}
             xAccessor={massAccessor}
             yAccessor={heightAccessor}
-            xLabel="Mass"
-            yLabel="Height"
+            xLabel="Mass (kg)"
+            yLabel="Height (cm)"
           />
           <Tooltip />
         </div>

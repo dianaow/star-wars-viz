@@ -3,12 +3,27 @@
   top: 0px;
   left: 0px;
   text-align: center;
-  width: 160px;
+  width: auto;
+  min-width: 140px;
   height: 60px;
-  padding: 2px;
-  font: 12px sans-serif;
-  background: gray;
-  border: 0px;
-  border-radius: 8px;
+  padding: 4px 8px;
+  background: var(--colorBackground);
+  border: var(--border);
+  border-radius: var(--radius);
   pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.tooltip_title {
+  font-weight: 700;
+  font-size: 1em;
+  padding: 4px;
+}
+
+.tooltip_subtitle {
+  font-weight: 400;
+  font-size: 0.8em;
+  padding: 4px;
 }

@@ -1,0 +1,60 @@
+.input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: var(--border);
+  border-radius: var(--radius);
+  height: 36px;
+  width: 280px;
+  padding: var(--gutter);
+  background-color: var(--colorBackground);
+}
+
+.input__active {
+  border-color: var(--colorPrimaryLight);
+  border-bottom-left-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+}
+
+.input__placeholder {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.input:hover {
+  cursor: pointer;
+}
+
+#svg-arrow {
+  fill: var(--colorAccent);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 200px;
+  width: 280px;
+  overflow: scroll;
+  background-color: var(--colorBackground);
+  border: var(--border);
+  padding: var(--gutter);
+  position: absolute;
+  z-index: 2;
+}
+
+.list > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: var(--gutter);
+}
+
+.list > div:hover {
+  background-color: var(--colorAccent);
+  color: var(--colorPrimaryDark);
+  cursor: pointer;
+}
+

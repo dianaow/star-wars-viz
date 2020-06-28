@@ -1,0 +1,14 @@
+.Circles__circle {
+  fill: var(--colorAccent);
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.Axis {
+  fill: var(--colorPrimaryLight);
+}
+
+.Axis__line {
+  stroke: var(--colorPrimaryLight);
+  stroke-width: 1px;
+}

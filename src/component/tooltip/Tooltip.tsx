@@ -12,11 +12,11 @@ const Tooltip = () => {
         style={{ 
           visibility: show ? 'visible' : 'hidden',
           left: `${x}px`,
-          top: `${y}px`,
+          top: `${y - 70}px`,
         }}
     >
-      <h4>{content.name}</h4>
-      <p>{content.gender}</p>
+      <div className='tooltip_title'>{content.name}</div>
+      <div className='tooltip_subtitle'>{content.gender}</div>
     </div>
   )
 }

@@ -6,6 +6,8 @@ import Axis from "../shared/Axis"
 import { combineChartDimensions } from "../shared/useChartDimensions";
 import {Person} from '../../model/person';
 
+import "./ScatterPlot.css"
+
 interface ScatterPlotProps {
   data: Person[];
   xAccessor: any;
@@ -16,7 +18,7 @@ interface ScatterPlotProps {
 
 const ScatterPlot: FC<ScatterPlotProps> = ({ data, xAccessor, yAccessor, xLabel, yLabel }) => {
 
-  const dimensions = combineChartDimensions({width: 600, height: 600})
+  const dimensions = combineChartDimensions({width: 600, height: 520})
 
   const xScale = d3.scaleLinear()
     //.domain(d3.extent(data, xAccessor))

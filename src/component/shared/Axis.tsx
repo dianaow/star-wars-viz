@@ -61,7 +61,7 @@ function AxisHorizontal ({ dimensions, label, formatTick, scale, ...props }: Axi
       {label && (
         <text
           className="Axis__label"
-          transform={`translate(${dimensions.boundedWidth / 2}, 50)`}
+          transform={`translate(${dimensions.boundedWidth / 2}, 60)`}
         >
           { label }
         </text>
@@ -97,7 +97,7 @@ function AxisVertical ({ dimensions, label, formatTick, scale, ...props }: AxisP
         <text
           className="Axis__label"
           style={{
-            transform: `translate(-50px, ${dimensions.boundedHeight / 2}px) rotate(-90deg)`
+            transform: `translate(-60px, ${dimensions.boundedHeight / 2}px) rotate(-90deg)`
           }}
         >
           { label }
